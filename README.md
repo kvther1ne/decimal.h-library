@@ -13,3 +13,13 @@ bits[3] contains the scale factor and sign, and consists of following parts:
 - Bits 16 to 23 must contain an exponent between 0 and 28, which indicates the power of 10 to divide the integer number.
 - Bits 24 to 30 are unused and must be zero.
 - Bit 31 contains the sign; 0 meaning positive, and 1 meaning negative.
+
+### Arithmetic operators
+
+| Operator name       | Operators        | Function            |
+| ------------- |:------------------:|:----------------------:|
+| -b (GNU: --number-nonblank)    |  numbers only non-empty lines   |
+| -e implies -v (GNU only: -E the same, but without implying -v)    | display end-of-line characters as $ |
+| -n (GNU: --number)  | number all output lines         |
+| -s (GNU: --squeeze-blank)  | squeeze multiple adjacent blank lines         |
+|  -t implies -v (GNU: -T the same, but without implying -v)  | display tabs as ^I         |
