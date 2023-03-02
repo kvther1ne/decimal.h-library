@@ -23,3 +23,18 @@ bits[3] contains the scale factor and sign, and consists of following parts:
 | Multiplication | * | int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) |
 | Division  | /  | int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) |
 | Modulo  | mod | int s21_mod(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) |
+
+The functions return the error code:
+
+- 0 - OK
+- 1 - the number is too large or equal to infinity
+- 2 - the number is too small or equal to negative infinity
+- 3 - division by 0
+
+Note on the numbers that do not fit into the mantissa:
+
+- When getting numbers that do not fit into the mantissa during arithmetic operations, use bank rounding (for example, 79,228,162,514,264,337,593,543,950,335 - 0.6 = 79,228,162,514,264,337,593,543,950,334)
+
+Note on the mod operation:
+
+- If an overflow occurred as a result, discard the fractional part (for example, 70,000,000,000,000,000,000,000,000,000 % 0.001 = 0.000)
