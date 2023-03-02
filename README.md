@@ -38,3 +38,19 @@ Note on the numbers that do not fit into the mantissa:
 Note on the mod operation:
 
 - If an overflow occurred as a result, discard the fractional part (for example, 70,000,000,000,000,000,000,000,000,000 % 0.001 = 0.000)
+
+### Comparison Operators
+
+| Operator name       | Operators        | Function            |
+| ------------- |:------------------:|:----------------------:|
+| Less than    |  <  | int s21_is_less(s21_decimal, s21_decimal) |
+| Less than or equal to   | <= | int s21_is_less_or_equal(s21_decimal, s21_decimal) |
+| Greater than | > | int s21_is_greater(s21_decimal, s21_decimal) |
+| Greater than or equal to  | >=  | int s21_is_greater_or_equal(s21_decimal, s21_decimal) |
+| Equal to  | == | int s21_is_equal(s21_decimal, s21_decimal) |
+| Not equal to  | != | int s21_is_not_equal(s21_decimal, s21_decimal) |
+
+Return value:
+
+- 0 - FALSE
+- 1 - TRUE
