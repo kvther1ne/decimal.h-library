@@ -20,6 +20,6 @@ bits[3] contains the scale factor and sign, and consists of following parts:
 | ------------- |:------------------:|:----------------------:|
 | Addition    |  +   | int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) |
 | Substraction   | - | int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) |
-| Multiplication | * |
-| Division  | /  |
-| Modulo  | mod |
+| Multiplication | * | int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) |
+| Division  | /  | int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) |
+| Modulo  | mod | int s21_mod(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) |
