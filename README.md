@@ -18,8 +18,8 @@ bits[3] contains the scale factor and sign, and consists of following parts:
 
 | Operator name       | Operators        | Function            |
 | ------------- |:------------------:|:----------------------:|
-| -b (GNU: --number-nonblank)    |  numbers only non-empty lines   |
-| -e implies -v (GNU only: -E the same, but without implying -v)    | display end-of-line characters as $ |
-| -n (GNU: --number)  | number all output lines         |
-| -s (GNU: --squeeze-blank)  | squeeze multiple adjacent blank lines         |
-|  -t implies -v (GNU: -T the same, but without implying -v)  | display tabs as ^I         |
+| Addition    |  +   | int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) |
+| Substraction   | - | int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) |
+| Multiplication | * |
+| Division  | /  |
+| Modulo  | mod |
