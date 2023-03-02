@@ -54,3 +54,41 @@ Return value:
 
 - 0 - FALSE
 - 1 - TRUE
+
+### Convertors and parsers
+
+| Convertor/Parser       |  Function            |
+| ------------- |:------------------:|
+| From int   |  int s21_from_int_to_decimal(int src, s21_decimal *dst)  |
+| From float   | int s21_from_float_to_decimal(float src, s21_decimal *dst) |
+| To int |  int s21_from_decimal_to_int(s21_decimal src, int *dst) |
+| To float  | int s21_from_decimal_to_float(s21_decimal src, float *dst)  |
+
+Return value - code error:
+
+- 0 - OK
+- 1 - convertation error
+
+Note on the conversion of a float type number:
+
+- If the numbers are too small (0 < |x| < 1e-28), return an error and value equal to 0
+- If the numbers are too large (|x| > 79,228,162,514,264,337,593,543,950,335) or are equal to infinity, return an error
+- When processing a number with the float type, convert all the significant decimal digits contained in it. If there are more than 7 such digits, the number is rounded to the closest one that does not have more than 7 significant decimal digits.
+
+Note on the conversion from decimal type to int:
+
+- If there is a fractional part in a decimal number, it should be discarded (for example, 0.9 is converted to 0)
+
+### Another functions
+
+| Description       |  Function            |
+| ------------- |:------------------:|
+| Rounds a specified Decimal number to the closest integer toward negative infinity.   |  int s21_floor(s21_decimal value, s21_decimal *result)  |
+| Rounds a decimal value to the nearest integer.   | int s21_round(s21_decimal value, s21_decimal *result) |
+| Returns the integral digits of the specified Decimal; any fractional digits are discarded, including trailing zeroes. |  int s21_truncate(s21_decimal value, s21_decimal *result) |
+| Returns the result of multiplying the specified Decimal value by negative one.  | int s21_negate(s21_decimal value, s21_decimal *result)  |
+
+Return value - code error:
+
+- 0 - OK
+- 1 - calculation error
