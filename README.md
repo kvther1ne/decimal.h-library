@@ -1,20 +1,23 @@
 # decimal.h-library
 
-## Implementation of my own s21_decimal.h library in C
+## Реализация библиотеки decimal.h на языке C
 
-In this project our team implemented the s21_decimal.h library in the C programming language. This library add the ability to work with the "decimal" type, which is not in the language standard. This type is critically important for financial calculations, for example, where errors of calculations characteristic of types with floating point are unacceptable. As part of the project we worked with the tasks of processing financial information, dive into the issues of internal representation of different types of data, and solidify knowledge of structured programming.
+В этом проекте наша команда реализовала библиотеку s21_decimal.h на языке программирования Си. Эта библиотека добавляет возможность работы с типом "decimal", который отсутствует в стандарте языка. Тем не менее, этот тип критически важен для, например, финансовых расчетов, где недопустимы погрешности вычислений, свойственные типам с плавающей точкой. В рамках этого проекта предполагается знакомство с задачами обработки финансовой информации, погружение в вопросы внутреннего представления различных типов данных и закрепление структурного подхода.
 
-The binary representation of a Decimal number consists of a 1-bit sign, a 96-bit integer number, and a scaling factor used to divide the integer number and specify what portion of it is a decimal fraction. The scaling factor is implicitly the number 10, raised to an exponent ranging from 0 to 28.
-Decimal number can be implemented as a four-element array of 32-bit signed integers (int bits[4];).
-bits[0], bits[1], and bits[2] contain the low, middle, and high 32 bits of the 96-bit integer number accordingly.
-bits[3] contains the scale factor and sign, and consists of following parts:
+Тип Decimal представляет десятичные числа в диапазоне от положительных 79,228,162,514,264,337,593,543,950,335 до отрицательных 79,228,162,514,264,337,593,543,950,335. Значение Decimal по умолчанию равно 0. Decimal подходит для финансовых расчетов, которые требуют большого количества значимых целых и дробных цифр и отсутствия ошибок округления. Этот тип не устраняет необходимость округления. Скорее, сводит к минимуму количество ошибок из-за округления.
+Decimal число - это значение с плавающей точкой, состоящее из знака, числового значения, где каждая цифра находится в диапазоне от 0 до 9, и коэффициента масштабирования, который указывает положение десятичной точки, разделяющей целые и дробные части числового значения.
+Двоичное представление Decimal состоит из 1-разрядного знака, 96-разрядного целого числа и коэффициента масштабирования, используемого для деления 96-разрядного целого числа и указания того, какая его часть является десятичной дробью. Коэффициент масштабирования неявно равен числу 10, возведенному в степень в диапазоне от 0 до 28. Следовательно, двоичное представление Decimal имеет вид ((от -2^96 до 2^96) / 10^(от 0 до 28)), где -(2^96-1) равно минимальному значению, а 2^96-1 равно максимальному значению.
+Двоичное представление Decimal состоит из 1-разрядного знака, 96-разрядного целого числа и коэффициента масштабирования, используемого для деления целого числа и указания того, какая его часть является десятичной дробью. Коэффициент масштабирования неявно равен числу 10, возведенному в степень в диапазоне от 0 до 28.
+Decimal число может быть реализовано в виде четырехэлементного массива 32-разрядных целых чисел со знаком (int bits[4];).
+bits[0], bits[1], и bits[2] содержат младшие, средние и старшие 32 бита 96-разрядного целого числа соответственно.
+bits[3] содержит коэффициент масштабирования и знак, и состоит из следующих частей:
 
-- Bits 0 to 15, the lower word, are unused and must be zero.
-- Bits 16 to 23 must contain an exponent between 0 and 28, which indicates the power of 10 to divide the integer number.
-- Bits 24 to 30 are unused and must be zero.
-- Bit 31 contains the sign; 0 meaning positive, and 1 meaning negative.
+- Биты от 0 до 15, младшее слово, не используются и должны быть равны нулю.
+- Биты с 16 по 23 должны содержать показатель степени от 0 до 28, который указывает степень 10 для разделения целого числа.
+- Биты с 24 по 30 не используются и должны быть равны нулю.
+- Бит 31 содержит знак; 0 означает положительный, а 1 означает отрицательный.
 
-### Arithmetic operators
+### Арифметические операции
 
 | Operator name       | Operators        | Function            |
 | ------------- |:------------------:|:----------------------:|
