@@ -48,45 +48,45 @@ bits[3] содержит коэффициент масштабирования �
 | Equal to  | == | int s21_is_equal(s21_decimal, s21_decimal) |
 | Not equal to  | != | int s21_is_not_equal(s21_decimal, s21_decimal) |
 
-Return value:
+Возвращаемое значение:
 
 - 0 - FALSE
 - 1 - TRUE
 
-### Convertors and parsers
+### Преобразователи
 
-| Convertor/Parser       |  Function            |
+| Преобразователь       |  Функция            |
 | ------------- |:------------------:|
 | From int   |  int s21_from_int_to_decimal(int src, s21_decimal *dst)  |
 | From float   | int s21_from_float_to_decimal(float src, s21_decimal *dst) |
 | To int |  int s21_from_decimal_to_int(s21_decimal src, int *dst) |
 | To float  | int s21_from_decimal_to_float(s21_decimal src, float *dst)  |
 
-Return value - code error:
+Возвращаемое значение - код ошибки:
 
 - 0 - OK
-- 1 - convertation error
+- 1 - ошибка конвертации
 
-Note on the conversion of a float type number:
+Уточнение про преобразование числа типа float:
 
-- If the numbers are too small (0 < |x| < 1e-28), return an error and value equal to 0
-- If the numbers are too large (|x| > 79,228,162,514,264,337,593,543,950,335) or are equal to infinity, return an error
-- When processing a number with the float type, convert all the significant decimal digits contained in it. If there are more than 7 such digits, the number is rounded to the closest one that does not have more than 7 significant decimal digits.
+- Если числа слишком малы (0 < |x| < 1e-28), возвращается ошибка и значение, равное 0
+- Если числа слишком велики (|x| > 79,228,162,514,264,337,593,543,950,335) или равны бесконечности, возвращается ошибку
+- При обработке числа с типом float преобразовываются все содержащиеся в нём значимые десятичные цифры. Если таких цифр больше 7, то значение числа округляется к ближайшему, у которого не больше 7 значимых цифр.
 
-Note on the conversion from decimal type to int:
+Уточнение про преобразование из числа типа decimal в тип int:
 
-- If there is a fractional part in a decimal number, it should be discarded (for example, 0.9 is converted to 0)
+- Если в числе типа decimal есть дробная часть, то она отбрасывается (например, 0.9 преобразуется 0)
 
-### Another functions
+### Другие функции
 
-| Description       |  Function            |
+| Описание       |  Функция            |
 | ------------- |:------------------:|
-| Rounds a specified Decimal number to the closest integer toward negative infinity.   |  int s21_floor(s21_decimal value, s21_decimal *result)  |
-| Rounds a decimal value to the nearest integer.   | int s21_round(s21_decimal value, s21_decimal *result) |
-| Returns the integral digits of the specified Decimal; any fractional digits are discarded, including trailing zeroes. |  int s21_truncate(s21_decimal value, s21_decimal *result) |
-| Returns the result of multiplying the specified Decimal value by negative one.  | int s21_negate(s21_decimal value, s21_decimal *result)  |
+| Округляет указанное Decimal число до ближайшего целого числа в сторону отрицательной бесконечности.   |  int s21_floor(s21_decimal value, s21_decimal *result)  |
+| Округляет Decimal до ближайшего целого числа.   | int s21_round(s21_decimal value, s21_decimal *result) |
+| Возвращает целые цифры указанного Decimal числа; любые дробные цифры отбрасываются, включая конечные нули. |  int s21_truncate(s21_decimal value, s21_decimal *result) |
+| Возвращает результат умножения указанного Decimal на -1.  | int s21_negate(s21_decimal value, s21_decimal *result)  |
 
-Return value - code error:
+Возвращаемое значение - код ошибки:
 
 - 0 - OK
-- 1 - calculation error
+- 1 - ошибка вычисления
